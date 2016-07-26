@@ -1,0 +1,26 @@
+{
+  "name": "expressjs-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=development MOCK=true nodemon --ignore node_modules/ server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinwyp/expressjs-demo.git"
+  },
+  "keywords": [
+    "expressjs"
+  ],
+  "author": "JinWYP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jinwyp/expressjs-demo/issues"
+  },
+  "homepage": "https://github.com/jinwyp/expressjs-demo#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
