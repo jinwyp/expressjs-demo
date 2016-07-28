@@ -19,7 +19,7 @@ module.exports = {
     port     : 3000, // 程序运行的端口
     homepage : 'http://pay-local.yimei180.com:3000',
 
-    session_secret   : 'this_is_yimeis_secret_key_node_redis__cache_long_',
+    cookie_secret   : 'this_is_yimeis_secret_key_node_redis__cache_long_',
     auth_cookie_name : 'signed_cookie_username',
 
     passport : {

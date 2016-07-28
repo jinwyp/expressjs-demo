@@ -35,11 +35,13 @@
     "csurf": "^1.9.0",
     "ejs": "^2.5.1",
     "express": "^4.14.0",
+    "helmet": "^2.1.2",
     "lodash": "^4.14.0",
     "moment": "^2.14.1",
     "morgan": "^1.7.0",
     "request": "^2.74.0",
-    "response-time": "^2.3.1"
+    "response-time": "^2.3.1",
+    "validator": "^5.5.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

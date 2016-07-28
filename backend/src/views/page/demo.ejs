@@ -1,0 +1,54 @@
+<%- include ../includehead/doctype %>
+<head>
+    <%- include ../includehead/head %>
+    <!--<link rel="stylesheet" href="<%= staticPath %>/styles/global.css">-->
+</head>
+
+<body ng-app="demo">
+
+
+
+
+
+<div class="text-center" ng-controller="GreetingController">
+        <p>对不起，您访问的页面不见了...</p>
+        <p><%= msg %></p>
+        <p><%= csrfToken %></p>
+
+</div>
+
+
+
+
+
+
+
+<%- include ../includehead/bottomscript %>
+
+
+<script type="text/javascript">
+    //    var goBack = document.getElementById('goBack');
+    //    goBack.onclick = function(event){
+    //        var event = event || window.event;
+    //        if( document.referrer ){
+    //            window.location.href = document.referrer;
+    //            event.preventDefault();
+    //            event.stopPropagation();
+    //        }
+    //    };
+
+    angular.module('demo', []);
+
+    angular.module('demo').controller('GreetingController', ['$scope', '$http', function($scope, $http) {
+        $scope.greeting = 'Hola!';
+
+        $http.post('/process', {user : 'aa'}).then(function(result){
+            console.log(result.data)
+        })
+
+    }]);
+</script>
+
+</body>
+</html>
+
