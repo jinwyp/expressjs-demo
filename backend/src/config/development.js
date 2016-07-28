@@ -11,6 +11,7 @@ module.exports = {
 
     debug : true,
 
+
     // 应用目录配置
     path_app  : path.join(__dirname, '../../../'),
     path_logs : path.join(__dirname, '../../../logs/'),

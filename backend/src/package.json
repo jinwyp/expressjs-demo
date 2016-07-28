@@ -4,8 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=development MOCK=true nodemon --ignore node_modules/ server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=development MOCK=false nodemon --ignore node_modules/ server.js",
+    "mock": "NODE_ENV=development MOCK=true nodemon --ignore node_modules/ server.js",
+    "test": "./node_modules/.bin/mocha --reporter spec --recursive"
+  },
+  "eslintConfig": {
+    "env": {
+      "mocha": true,
+      "node": true
+    }
   },
   "repository": {
     "type": "git",
@@ -21,6 +28,21 @@
   },
   "homepage": "https://github.com/jinwyp/expressjs-demo#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "lodash": "^4.14.0",
+    "moment": "^2.14.1",
+    "morgan": "^1.7.0",
+    "request": "^2.74.0",
+    "response-time": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
   }
 }

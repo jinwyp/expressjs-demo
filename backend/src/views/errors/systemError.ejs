@@ -1,0 +1,46 @@
+<%- include ../includehead/doctype %>
+<head>
+    <%- include ../includehead/head %>
+    <link rel="stylesheet" href="<%= staticPath %>/styles/global.css">
+</head>
+
+<body>
+
+
+
+
+
+<div class="text-center">
+    <div class="error-404">
+        <img <%- ngShow(message !== "您还没有开通易煤网资金账户.") %> src="<%= staticPath %>/images/error/error500.png"/>
+        <p><%- message %></p>
+        <p <%- ngShow(message === "您还没有开通易煤网资金账户.") %> ><a href="/">立即开通资金账号</a></p>
+
+        <a id="goBack" href="<%= sitepage %>" class="btn btn-primary btn-customer">返回</a>
+    </div>
+</div>
+
+
+
+
+
+
+<%- include ../includehead/bottomscript %>
+
+
+
+<script type="text/javascript">
+//    var goBack = document.getElementById('goBack');
+//    goBack.onclick = function(event){
+//        var event = event || window.event;
+//        if( document.referrer ){
+//            window.location.href = document.referrer;
+//            event.preventDefault();
+//            event.stopPropagation();
+//        }
+//    };
+</script>
+
+</body>
+</html>
+
