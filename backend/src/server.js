@@ -64,10 +64,11 @@ app.use(cookieParser(config.cookie_secret));
 
 //加载 安全中间件
 app.use(helmet());
-
+app.use(csurf({ cookie: true }));
 
 // 设置全局模版变量
 app.use(function (req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
     res.locals.staticPath = '/static';
     res.locals.siteUrl = config.homepage;
     res.locals.page = {
@@ -94,10 +95,13 @@ app.use('/docs',express.static(document));
 //    next();
 //});
 
+
+
 app.use('/api', routes.api);
 app.use('/', routes.webPage);
 
-app.use(csurf({ cookie: true }));
+
+
 
 app.get('/form', function(req, res) {
     // pass the csrfToken to the view
@@ -108,7 +112,7 @@ app.get('/form', function(req, res) {
 
 app.post('/process', function(req, res) {
 
-    res.render('page/demo', { msg: 'csrf was required to get here', csrfToken:'' } )
+    res.send( { msg: 'csrf was required to get here', csrfToken:'' } )
 });
 
 

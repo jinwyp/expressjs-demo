@@ -11,7 +11,6 @@
 
 
 <div class="text-center" ng-controller="GreetingController">
-        <p>对不起，您访问的页面不见了...</p>
         <p><%= msg %></p>
         <p><%= csrfToken %></p>
 
@@ -42,7 +41,10 @@
     angular.module('demo').controller('GreetingController', ['$scope', '$http', function($scope, $http) {
         $scope.greeting = 'Hola!';
 
-        $http.post('/process', {user : 'aa'}).then(function(result){
+
+        $http.post('/process', {user : 'aa'}, {
+            headers: {'x-csrf-token': $('meta[name="csrf-token"]').attr('content')}
+        }).then(function(result){
             console.log(result.data)
         })
 
