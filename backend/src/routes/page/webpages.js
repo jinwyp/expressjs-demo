@@ -8,6 +8,8 @@ var router                    = express.Router();
 var pageDemoController = require('../../controllers/page/pagedemo');
 
 // define the demo page route
+router.get('/form', pageDemoController.orderFormPage);
+
 router.get('/rgbToHex', pageDemoController.rgbToHex);
 router.get('/hexToRgb', pageDemoController.hexToRgb);
 

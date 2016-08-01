@@ -7,11 +7,18 @@
 var express                   = require('express');
 var router                    = express.Router();
 
-var pageDemoController = require('../../controllers/page/pagedemo');
+var orderController = require('../../controllers/apiv1/apidemo');
+
 
 // define the demo page route
-router.get('/rgbToHex', pageDemoController.rgbToHex);
-router.get('/hexToRgb', pageDemoController.hexToRgb);
+// RESTful API http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/
+
+router.get('/orders', orderController.orderList);
+router.post('/orders', orderController.orderAdd);
+router.post('/orders/error', orderController.orderAddWithError);
+router.get('/orders/:id', orderController.orderById);
+router.put('/orders/:id', orderController.orderUpdateById);
+router.delete('/orders/:id', orderController.orderDelete);
 
 
 

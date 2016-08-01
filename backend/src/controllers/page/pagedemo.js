@@ -26,3 +26,17 @@ exports.hexToRgb = function (req, res, next) {
 
 };
 
+
+
+exports.orderFormPage = function (req, res, next) {
+
+    console.log(req.csrfToken());
+    console.log('Cookies: ', req.cookies);
+
+    //res.setHeader('x-csrf-token', req.csrfToken());
+    res.render('page/demo', {msg:'', csrfToken: req.csrfToken() });
+
+};
+
+
+

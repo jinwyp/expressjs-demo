@@ -86,16 +86,6 @@ app.use('/files',express.static(fileStatic));
 app.use('/docs',express.static(document));
 
 
-// 动态请求路由
-//app.use(function (req, res, next) {
-//    if (req.path.indexOf('/api') === -1) {
-//        csurf()(req, res, next);
-//        return;
-//    }
-//    next();
-//});
-
-
 
 app.use('/api', routes.api);
 app.use('/', routes.webPage);
@@ -103,17 +93,9 @@ app.use('/', routes.webPage);
 
 
 
-app.get('/form', function(req, res) {
-    // pass the csrfToken to the view
-    console.log(req.csrfToken())
-    res.setHeader('x-csrf-token', req.csrfToken());
-    res.render('page/demo', {msg:'', csrfToken: req.csrfToken() })
-});
 
-app.post('/process', function(req, res) {
 
-    res.send( { msg: 'csrf was required to get here', csrfToken:'' } )
-});
+
 
 
 app.use(errorHandler.PageNotFoundMiddleware);

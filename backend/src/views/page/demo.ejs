@@ -9,12 +9,35 @@
 
 
 
-
-<div class="text-center" ng-controller="GreetingController">
+<div class="row" ng-controller="GreetingController">
+    <div class="col-lg-12">
         <p><%= msg %></p>
         <p><%= csrfToken %></p>
+    </div>
 
+    <div class="col-lg-12">
+        <button class="btn btn-default" ng-click="getOrderList()">订单列表</button>
+        <button class="btn btn-primary" ng-click="getOrderById()">获取一个订单</button>
+        <button class="btn btn-info" ng-click="orderAdd()">添加一个订单成功</button>
+        <button class="btn btn-info" ng-click="orderAddWithError()">添加一个订单,表单验证失败</button>
+        <button class="btn btn-warning" ng-click="orderUpdateById()">修改一个订单</button>
+        <button class="btn btn-danger" ng-click="orderDel()">删除一个订单</button>
+    </div>
+
+    <div class="col-lg-12">
+        <pre><code>
+            {{orderList}}
+        </code></pre>
+    </div>
+    <div class="col-lg-12">
+        <pre><code>
+            {{order}}
+        </code></pre>
+    </div>
 </div>
+
+
+
 
 
 
@@ -38,17 +61,76 @@
 
     angular.module('demo', []);
 
+
+    angular.module('demo').factory('httpInterceptor', function() {
+
+        return {
+            request: function(config) {
+                config.headers = config.headers || {};
+
+                config.headers['x-csrf-token'] = $('meta[name="csrf-token"]').attr('content');
+
+                return config;
+            }
+        };
+    })
+
+
+    angular.module('demo').config(function($httpProvider) {
+        $httpProvider.interceptors.push('httpInterceptor');
+    })
+
+
     angular.module('demo').controller('GreetingController', ['$scope', '$http', function($scope, $http) {
-        $scope.greeting = 'Hola!';
+        $scope.orderList = [];
+        $scope.order = {};
 
+        $scope.getOrderList = function (){
+            $http.get('/api/orders').then(function(result){
+                $scope.orderList = result.data;
+                console.log(result.data);
+            })
+        }
 
-        $http.post('/process', {user : 'aa'}, {
-            headers: {'x-csrf-token': $('meta[name="csrf-token"]').attr('content')}
-        }).then(function(result){
-            console.log(result.data)
-        })
+        $scope.getOrderById = function (){
+            $http.get('/api/orders'+'/11', {id:11}).then(function(result){
+                $scope.order = result.data;
+                console.log(result.data);
+            })
+        }
+
+        $scope.orderAdd = function (){
+            $http.post('/api/orders', {id:21, orderNo:12345}).then(function(result){
+                $scope.order = result.data;
+                console.log(result.data);
+            })
+        }
+
+        $scope.orderAddWithError = function (){
+            $http.post('/api/orders/error', {id:21, orderNo:12345}).then(function(result){
+                $scope.order = result.data;
+                console.log(result.data);
+            })
+        }
+
+        $scope.orderUpdateById = function (){
+            $http.put('/api/orders'+'/11', {id:21, orderNo:12345}).then(function(result){
+                $scope.order = result.data;
+                console.log(result.data);
+            })
+        }
+
+        $scope.orderDel = function (){
+            $http.delete('/api/orders'+'/11', {id:11}).then(function(result){
+                $scope.order = result.data;
+                console.log(result.data);
+            })
+        }
+
 
     }]);
+
+
 </script>
 
 </body>
