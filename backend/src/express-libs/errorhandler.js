@@ -2,9 +2,9 @@
  * Created by JinWYP on 5/30/16.
  */
 
-var inspect = require('util').inspect;
+var inspect        = require('util').inspect;
 var PrettyErrorLib = require('pretty-error');
-var PrettyError = new PrettyErrorLib();
+var PrettyError    = new PrettyErrorLib();
 PrettyError.skipNodeFiles(); // this will skip events.js and http.js and similar core node files, this will skip node.js, path.js, event.js, etc.
 PrettyError.skipPackage('express', 'mongoose'); // this will skip all the trace lines about express` core and sub-modules
 
@@ -12,8 +12,8 @@ var logger = require('../express-libs/logger');
 var config = require('../config');
 
 var UnauthorizedAccessError = require('../errors/UnauthorizedAccessError');
-var PageNotFoundError          = require('../errors/PageNotFoundError');
-var SystemError                = require('../errors/SystemError');
+var PageNotFoundError       = require('../errors/PageNotFoundError');
+var SystemError             = require('../errors/SystemError');
 
 
 
@@ -28,13 +28,13 @@ exports.PageNotFoundMiddleware = function(req, res, next) {
 exports.DevelopmentHandlerMiddleware = function(err, req, res, next) {
     var newErr = err;
 
-    if (typeof err.type !== 'undefined' && err.code === 'EBADCSRFTOKEN') {
-        newErr = new UnauthorizedAccessError(401, 'CSRF Token Wrong!');
-    }
-
     if (typeof err.type === 'undefined'){
         newErr = new SystemError(500, err.message||'系统出错了，正在解决中', err);
         if (err && typeof err.stack !== 'undefined'){newErr.stack = err.stack;}
+    }
+
+    if (typeof err !== 'undefined' && err.name === 'ForbiddenError' && err.code === 'EBADCSRFTOKEN') {
+        newErr = new UnauthorizedAccessError(401, 'CSRF Token Invalid!');
     }
 
     res.status(newErr.status);
