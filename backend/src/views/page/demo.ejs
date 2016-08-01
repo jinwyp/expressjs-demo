@@ -67,8 +67,7 @@
         return {
             request: function(config) {
                 config.headers = config.headers || {};
-
-//                config.headers['x-csrf-token'] = $('meta[name="csrf-token"]').attr('content');
+                config.headers['x-csrf-token'] = $('meta[name="csrf-token"]').attr('content');
 
                 return config;
             }
