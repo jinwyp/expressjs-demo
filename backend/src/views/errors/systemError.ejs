@@ -1,7 +1,7 @@
 <%- include ../includehead/doctype %>
 <head>
     <%- include ../includehead/head %>
-    <link rel="stylesheet" href="<%= staticPath %>/styles/global.css">
+    <link rel="stylesheet" href="<%= staticPath %>/css/styles/global.css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
 <div class="text-center">
     <div class="error-404">
-        <img <%- ngShow(message !== "您还没有开通易煤网资金账户.") %> src="<%= staticPath %>/images/error/error500.png"/>
+        <img <%- ngShow(message !== "您还没有开通易煤网资金账户.") %> src="<%= staticPath %>/css/images/error/error500.png"/>
         <p><%- message %></p>
         <p <%- ngShow(message === "您还没有开通易煤网资金账户.") %> ><a href="/">立即开通资金账号</a></p>
 
