@@ -22,11 +22,11 @@ delete require.cache[__filename];
 
 
 
-var requireDir = function(newDirname, models){
+var requireDir = function(newDirName, models){
 
     models = models || {};
     // var currentFile = path.basename(__filename);
-    var modelFiles = fs.readdirSync(newDirname);
+    var modelFiles = fs.readdirSync(newDirName);
 
 
     // loop through all of the files in the current directory
@@ -36,7 +36,7 @@ var requireDir = function(newDirname, models){
         var fileExt = '';
         var fileBasename = '';
 
-        var nextDirname = path.resolve(newDirname, file);
+        var nextDirname = path.resolve(newDirName, file);
         var nextDirnameStats = fs.statSync(nextDirname);
 
         if (nextDirnameStats.isDirectory()){
@@ -50,32 +50,30 @@ var requireDir = function(newDirname, models){
                 continue;  // skip the current file and anything without a "JS" extension
 
             }else {
-                models[fileBasename] = path.join(newDirname, file);
+                models[fileBasename] = path.join(newDirName, file);
             }
         }
 
     }
-
-
+    
     return models;
-
 };
 
 
 
 
 
-var initialize = function(sourceDirname, options) {
+var initialize = function(sourceDirName, options) {
 
     options.type = options.type || 'object';
 
     if (options)
-        sourceDirname = sourceDirname || '.';
+        sourceDirName = sourceDirName || '.';
     // resolve the path to an absolute one:
-    sourceDirname = path.resolve(parentDir, sourceDirname);
+    sourceDirName = path.resolve(parentDir, sourceDirName);
 
 
-    var files = requireDir(sourceDirname, {});
+    var files = requireDir(sourceDirName, {});
 
 
     var result;

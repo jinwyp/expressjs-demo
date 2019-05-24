@@ -28,7 +28,9 @@ var staticDir  = path.join(__dirname, '../../frontend/src');
 var fileStatic = config.path_file;
 var viewHtmlPath = path.join(__dirname, 'views');
 
-if (config.NODE_ENV !== 'development') viewHtmlPath = path.join(__dirname, '../dist/views');
+if (config.NODE_ENV !== 'development') {
+    viewHtmlPath = path.join(__dirname, '../dist/views');
+}
 
 
 // 设置 View 模版引擎

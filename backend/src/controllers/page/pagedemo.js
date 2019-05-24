@@ -34,7 +34,7 @@ exports.orderFormPage = function (req, res, next) {
     console.log('Cookies: ', req.cookies);
 
     //res.setHeader('x-csrf-token', req.csrfToken());
-    res.render('page/demo', {msg:'', csrfToken: req.csrfToken() });
+    res.render('page/demo', {msg:'Demo page', csrfToken: req.csrfToken() });
 
 };
 

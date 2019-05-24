@@ -28,26 +28,24 @@
   },
   "homepage": "https://github.com/jinwyp/expressjs-demo#readme",
   "dependencies": {
-    "bluebird": "^3.4.1",
-    "body-parser": "^1.15.2",
-    "compression": "^1.6.2",
-    "cookie-parser": "^1.4.3",
-    "csurf": "^1.9.0",
-    "ejs": "^2.5.1",
-    "express": "^4.14.0",
-    "helmet": "^2.1.2",
-    "lodash": "^4.14.0",
-    "moment": "^2.14.1",
-    "morgan": "^1.7.0",
-    "pretty-error": "^2.0.0",
-    "request": "^2.74.0",
-    "response-time": "^2.3.1",
-    "validator": "^5.5.0",
-    "winston": "^2.2.0",
-    "winston-daily-rotate-file": "^1.2.0"
+    "bluebird": "^3.5.4",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "csurf": "^1.10.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "helmet": "^3.18.0",
+    "morgan": "^1.9.1",
+    "pretty-error": "^2.1.1",
+    "request": "^2.88.0",
+    "response-time": "^2.3.2",
+    "validator": "^11.0.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.9.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
   }
 }
